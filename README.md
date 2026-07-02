@@ -6,12 +6,12 @@
 
 Check evaluation rubrics for vague criteria, weights, and examples. It solves review drift by turning plain-text plans into deterministic CI-friendly findings.
 
-## Input Contract 50
+## Input Contract
 
 Accepts evaluation rubric. The reader supports plain text, JSON, JSONL, and CSV so the
 tool can fit into scripts, CI jobs, and review exports.
 
-## CLI Walkthrough 50
+## CLI Walkthrough
 
 ```bash
 python -m pip install -e ".[dev]"
@@ -20,7 +20,7 @@ evaluation-rubric-check examples/sample.txt --json --fail-on medium
 python -m evaluation_rubric_check --help
 ```
 
-## Rule Surface 50
+## Rule Surface
 
 | Rule | Severity | Meaning |
 |---|---:|---|
@@ -28,7 +28,7 @@ python -m evaluation_rubric_check --help
 | `missing-weights` | medium | weights missing |
 | `missing-examples` | low | examples missing |
 
-## Validation Notes 50
+## Validation Notes
 
 ```bash
 ruff check .
