@@ -1,36 +1,35 @@
 # Evaluation Rubric Check
 
-Check evaluation rubrics for vague criteria, weights, and examples.
-
-## First impression
-
 ![Evaluation Rubric Check cover](assets/readme-cover.svg)
 
-When this tool reports something, I want the finding to be boringly explicit: what matched, how severe it is, and what a reviewer should clean up.
+Check evaluation rubrics for vague criteria, weights, and examples. The command is intentionally direct so it can sit in a local review, a CI step, or a one-off audit.
 
-## Tripwires
+## Repo landmarks
 
-- `vague-criteria` (high): criteria are vague. Fix: make rubric criteria measurable.
-- `missing-weights` (medium): weights missing. Fix: assign scoring weights.
-- `missing-examples` (low): examples missing. Fix: add scoring examples.
+```text
+.github/        CI workflow
+examples/       sample inputs
+src/            package source
+tests/          test coverage
+```
 
-## Runbook
+## Checks in plain language
+
+| Signal | Level | What it flags | Fix direction |
+| --- | --- | --- | --- |
+| `vague-criteria` | high | criteria are vague | make rubric criteria measurable |
+| `missing-weights` | medium | weights missing | assign scoring weights |
+| `missing-examples` | low | examples missing | add scoring examples |
+
+## Finding map
+
+![Workflow diagram](assets/readme-diagram.svg)
+
+## Fresh clone path
 
 ```bash
 git clone https://github.com/mertefekurt/evaluation-rubric-check.git
 cd evaluation-rubric-check
-python -m venv .venv
-source .venv/bin/activate
 python -m pip install -e ".[dev]"
-```
-
-Then:
-
-```bash
 evaluation-rubric-check examples/sample.txt
-evaluation-rubric-check examples/sample.txt --json
 ```
-
-## Development note
-
-The policy lives in `rules.py`; parsing and rendering stay separate so the rule list is easy to audit.
